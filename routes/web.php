@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\UserController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -14,5 +14,9 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('auth.login');
 });
+
+Route::get('/entries/create',[UserController::class, 'index'])->name('entries.index');
+Route::get('/entries/add_entries',[UserController::class, 'create'])->name('entries.create');
+Route::post('/entries/save_entries',[UserController::class, 'save_entries'])->name('entries.save_entries');
